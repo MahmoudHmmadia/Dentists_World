@@ -5,7 +5,6 @@ import {
   FcIdea,
 } from "react-icons/all";
 import image1 from "../../assets/images/info2.svg";
-import { nanoid } from "@reduxjs/toolkit";
 import { skillsInfo } from "../../data/data";
 import { motion as m } from "framer-motion";
 import "./info.scss";
