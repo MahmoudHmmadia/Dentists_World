@@ -14,6 +14,7 @@ import { SyntheticEvent, useState } from "react";
 import myAxios from "../../api/axios";
 import { motion as m } from "framer-motion";
 import "./register.scss";
+import { AxiosError } from "axios";
 function Register() {
   const {
     handleBlur,
@@ -54,7 +55,7 @@ function Register() {
           setIsLoading(false);
           setIsSuccess(true);
         })
-        .catch((err) => {
+        .catch((err: AxiosError) => {
           clearInputs();
           setIsLoading(false);
           if (err.response?.status === 409) setError("هذا الاسم مسجل سابقاً");
