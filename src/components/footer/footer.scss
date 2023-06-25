@@ -1,0 +1,10 @@
+.footer {
+  h1 {
+    text-shadow: 0 0 5px #fff;
+  }
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 25px;
+    }
+  }
+}

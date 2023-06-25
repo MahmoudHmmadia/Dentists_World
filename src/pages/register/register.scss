@@ -1,0 +1,75 @@
+@use "../../sass/colors/colors" as *;
+.register {
+  .container {
+    position: relative;
+    .register__content {
+      .form {
+        border-radius: 25px;
+        background-image: url("../../assets/images/register.jpg");
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #ffff;
+          opacity: 0.9;
+        }
+        .form__logo {
+          img {
+            width: 150px;
+          }
+        }
+        form {
+          border-radius: 25px;
+          .input-container {
+            z-index: 10000;
+            input,
+            label {
+              direction: rtl;
+            }
+            label {
+              pointer-events: none;
+            }
+            &.move label {
+              top: 0;
+              font-size: 10px;
+              color: #000;
+              padding: 4px;
+              font-weight: bold;
+              &::after {
+                content: "";
+                position: absolute;
+                top: 55%;
+                left: 0;
+                transform: translateY(-50%);
+                width: 100%;
+                height: 4px;
+                z-index: -1;
+                background-color: #fefefe;
+              }
+            }
+            input {
+              border: 3px solid $sky;
+            }
+            .input_label {
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+      .image {
+        z-index: 1000;
+        @media (max-width: 767px) {
+          display: none;
+        }
+        img {
+          width: 500px;
+        }
+      }
+    }
+  }
+}

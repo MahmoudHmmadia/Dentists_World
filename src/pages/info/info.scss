@@ -1,0 +1,70 @@
+@use "../../sass/colors/colors" as *;
+@use "../../sass/mixins/grid" as *;
+.info {
+  .info__content {
+    .box {
+      .information {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        .title {
+          margin-bottom: 0;
+          -webkit-text-stroke-width: 1px;
+          @media (max-width: 767px) {
+            font-size: 16px !important;
+          }
+        }
+        p {
+          line-height: 2;
+          @media (max-width: 500px) {
+            font-weight: bold;
+          }
+        }
+      }
+      .skills-info {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      }
+      .image {
+        img {
+          width: 500px;
+        }
+        @media (max-width: 991px) {
+          width: 350px;
+        }
+      }
+      @media (max-width: 767px) {
+        flex-direction: column;
+        align-items: center;
+        .information {
+          order: 1;
+        }
+        .image {
+          order: 2;
+        }
+      }
+      .skills {
+        @media (max-width: 991px) {
+          width: 25%;
+        }
+        @media (max-width: 767px) {
+          width: 100%;
+          order: 2;
+        }
+        .skill {
+          width: 60px;
+          height: 60px;
+          @media (max-width: 991px) {
+            width: 45px;
+            height: 45px;
+          }
+        }
+      }
+      .skills-info {
+        @media (max-width: 767px) {
+          order: 1;
+        }
+      }
+    }
+  }
+  @media (max-width: 450px) {
+    padding-top: 100px;
+  }
+}

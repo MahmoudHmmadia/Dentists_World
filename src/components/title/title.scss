@@ -1,0 +1,11 @@
+@use "../../sass/colors/colors" as *;
+.cool-title {
+  text-shadow: 1px 1px 7px $sky;
+  direction: rtl;
+  -webkit-text-stroke: 2px;
+  position: relative;
+  z-index: 1000;
+  .icon {
+    transform: translate(5px, -15px);
+  }
+}

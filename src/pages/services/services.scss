@@ -1,0 +1,41 @@
+@use "../../sass/colors/colors" as *;
+@use "../../sass/mixins/grid" as *;
+.services {
+  .services__content {
+    .box {
+      .description {
+        .title {
+          text-shadow: 0 0 0 $main;
+          margin-bottom: 0;
+          -webkit-text-stroke-width: 1px;
+        }
+      }
+      @media (max-width: 767px) {
+        flex-direction: column;
+        .description,
+        .image {
+          width: 100%;
+        }
+        .description {
+          .title {
+            font-size: 15px !important;
+          }
+        }
+      }
+    }
+    .services__group {
+      @include grid(300px);
+      @media (max-width: 400px) {
+        @include grid(250px);
+      }
+      .service {
+        .service__image {
+          img {
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+    }
+  }
+}
