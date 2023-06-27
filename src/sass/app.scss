@@ -40,7 +40,7 @@ body {
       height: 800px;
       left: 50%;
       top: -25%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) !important;
     }
     @media (max-width: 300px) {
       top: -25%;
