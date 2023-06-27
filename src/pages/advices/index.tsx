@@ -12,7 +12,7 @@ function Advices() {
         <div className="advices__content flex flex-column g-1">
           {advices.map((advice, index) => (
             <m.div
-              className="advice radius p-2 box-shadow flex g-1 align-center justify-center txt-c white-bg radius "
+              className="advice radius-m p-2 light-box-shadow flex g-1 align-center justify-center txt-c white-bg "
               key={index}
               whileInView={{
                 opacity: [0, 1],

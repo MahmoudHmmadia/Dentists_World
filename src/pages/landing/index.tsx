@@ -74,7 +74,7 @@ function Landing() {
             whileHover={{
               scale: 1.2,
             }}
-            className="button cl-w main-bg w-fit txt-e sunny_gradient_bg radius"
+            className="button cl-w main-bg w-fit txt-e sunny_gradient_bg radius-m"
           >
             <a
               href="#حجز دور"

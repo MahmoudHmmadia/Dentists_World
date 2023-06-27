@@ -9,12 +9,14 @@ import {
 } from "react-icons/all";
 import registerImage from "../../assets/images/register.svg";
 import logo from "../../assets/images/logo.png";
-import { useRegister, patient } from "../../hooks/useRegister";
+import { useRegister, patient, SERVER_ERROR } from "../../hooks/useRegister";
 import { SyntheticEvent, useState } from "react";
 import myAxios from "../../api/axios";
 import { motion as m } from "framer-motion";
 import "./register.scss";
 import { AxiosError } from "axios";
+import ServerResponse from "../../components/serverResponse";
+import { UseContext } from "../../context/context";
 function Register() {
   const {
     handleBlur,
@@ -40,9 +42,8 @@ function Register() {
     occupation: "",
     phoneId: "",
   };
+  const { serverResponse, setServerResponse } = UseContext();
   const [isLoading, setIsLoading] = useState(false);
-  const [IsSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState<string | undefined>(undefined);
   async function handleSubmit(e: SyntheticEvent) {
     if (isValid) {
       setIsLoading(true);
@@ -53,17 +54,26 @@ function Register() {
         .then(() => {
           clearInputs();
           setIsLoading(false);
-          setIsSuccess(true);
+          setServerResponse({
+            type: "",
+            content: "تم تسجيل الدور بنجاح",
+          });
         })
         .catch((err: AxiosError) => {
           clearInputs();
           setIsLoading(false);
-          if (err.response?.status === 409) setError("هذا الاسم مسجل سابقاً");
+          if (err.response?.status === 409)
+            setServerResponse({
+              content: "هذا الاسم مسجل سابقاً",
+              type: "error",
+            });
           else if (err.response?.status == 400)
-            setError("تأكد من تعبئة الحقول بقيم صحيحة");
-          else setError("يوجد عطل بالسيرفر");
+            setServerResponse({
+              content: "تأكد من تعبئة الحقول بقيم صحيحة",
+              type: "error",
+            });
+          else setServerResponse(SERVER_ERROR);
         });
-      reset();
     }
   }
   return (
@@ -98,33 +108,16 @@ function Register() {
                 </div>
               </div>
             )}
-            {error && (
-              <div className="w-100 absolute flex flex-column align-center justify-center g-1 h-100 red_gradient_bg smooth t-0 l-0 progress z-100000">
-                <p className="cl-w">{error}</p>
-                <button
-                  className="flex align-center g-1 green_gradient_bg p-2 radius cl-w"
-                  onClick={() => setError(undefined)}
-                >
-                  <div className="icon flex">
-                    <IoRefresh />
-                  </div>
-                  <span>إعادة المحاولة</span>
-                </button>
-              </div>
-            )}
-            {IsSuccess && (
-              <div className="w-100 absolute flex flex-column align-center justify-center g-1 h-100 cloudy-bg smooth t-0 l-0 progress z-100000">
-                <p className="cl-b">تم تسجيل الدور بنجاح !</p>
-                <button
-                  className="flex align-center g-1 blue_gradient_bg p-2 radius cl-w"
-                  onClick={() => setIsSuccess(false)}
-                >
-                  <div className="icon flex">
-                    <AiFillHome />
-                  </div>
-                  <span>الرجوع إلى الصفحة الرئيسية</span>
-                </button>
-              </div>
+            {serverResponse && (
+              <>
+                <div
+                  className="fixed l-0 t-0 w-100 h-100 black-bg opacity-80"
+                  style={{
+                    zIndex: 11111,
+                  }}
+                ></div>
+                <ServerResponse response={serverResponse} reset={reset} />
+              </>
             )}
             <form
               action=""
@@ -134,7 +127,7 @@ function Register() {
               <div className="input-container relative">
                 <label
                   htmlFor="name"
-                  className="bold fs-small absolute input_label cl-t smooth"
+                  className="bold fs-small absolute input_label cl-t smooth-2"
                 >
                   الاسم الثلاثي
                 </label>
@@ -152,7 +145,7 @@ function Register() {
               <div className="input-container relative">
                 <label
                   htmlFor="age"
-                  className="bold fs-small absolute input_label cl-t smooth"
+                  className="bold fs-small absolute input_label cl-t smooth-2"
                 >
                   العمر
                 </label>
@@ -170,7 +163,7 @@ function Register() {
               <div className="input-container relative">
                 <label
                   htmlFor="job"
-                  className="bold fs-small absolute input_label cl-t smooth"
+                  className="bold fs-small absolute input_label cl-t smooth-2"
                 >
                   المهنة
                 </label>
@@ -188,7 +181,7 @@ function Register() {
               <div className="input-container relative">
                 <label
                   htmlFor="phone_number"
-                  className="bold fs-small absolute input_label cl-t smooth"
+                  className="bold fs-small absolute input_label cl-t smooth-2"
                 >
                   الرقم
                 </label>
@@ -206,7 +199,7 @@ function Register() {
               <div className="input-container relative">
                 <label
                   htmlFor="address"
-                  className="bold fs-small absolute input_label cl-t smooth"
+                  className="bold fs-small absolute input_label cl-t smooth-2"
                 >
                   العنوان
                 </label>
@@ -266,7 +259,7 @@ function Register() {
                 }}
                 type="submit"
                 className={`button  cl-w centering-content 
-                    bold g-1 p-1 radius relative z-10000 fs-b-small m-auto w-80 ${
+                    bold g-1 p-1 radius-s relative z-10000 fs-b-small m-auto w-80 ${
                       isValid
                         ? "blue_gradient_bg pointer"
                         : "mouse-none gray-bg"

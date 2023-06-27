@@ -1,11 +1,16 @@
 @use "../../sass/colors/colors" as *;
 nav {
   position: fixed;
-  z-index: 1000000000;
+  z-index: 11111;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   top: 0;
+  .flower {
+    @media (min-width: 767px) {
+      display: none;
+    }
+  }
   .logo {
     position: relative;
     img {

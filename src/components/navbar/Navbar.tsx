@@ -18,7 +18,7 @@ function Navbar() {
       <div className="container flex align-center justify-between">
         <ul className={`links flex g-2 justify-end ${toggle ? "show" : ""}`}>
           {toggle && (
-            <div className="icon cl-m txt-c fs-x-large">
+            <div className="icon cl-m txt-c fs-x-large flower">
               <GiDandelionFlower />
             </div>
           )}

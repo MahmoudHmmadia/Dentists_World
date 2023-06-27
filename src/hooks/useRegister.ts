@@ -7,6 +7,10 @@ export type patient = {
   address: string;
   gender: string;
 };
+export const SERVER_ERROR = {
+  type: "error",
+  content: "هناك عطل بالسيرفر ، حاول لاحقاً",
+};
 export function useRegister() {
   const nameRef = useRef<HTMLInputElement>(null);
   const ageRef = useRef<HTMLInputElement>(null);
@@ -16,6 +20,7 @@ export function useRegister() {
   const maleRef = useRef<HTMLInputElement>(null);
   const femaleRef = useRef<HTMLInputElement>(null);
   const [isValid, setIsValid] = useState(false);
+
   const handleBlur = (e: SyntheticEvent) => {
     const target = e.target as HTMLInputElement;
     if (target.value === "") {

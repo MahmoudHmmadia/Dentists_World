@@ -12,20 +12,17 @@ const NavLinkComponent = ({ title, icon, setToggle }: link) => {
   }
   return (
     <>
-      <motion.li
-        whileHover={{
-          color: "#2dc1e4",
-        }}
-        className="relative link"
-        onClick={handleToggle}
-      >
-        <a
+      <motion.li className="relative link" onClick={handleToggle}>
+        <motion.a
           href={`#${title}`}
           className="pointer bold relative centering-content g-1 link"
+          whileHover={{
+            color: "#2dc1e4",
+          }}
         >
           <span>{title}</span>
           <div className="icon flex">{icon}</div>
-        </a>
+        </motion.a>
       </motion.li>
     </>
   );

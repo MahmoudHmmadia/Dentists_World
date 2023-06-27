@@ -12,6 +12,7 @@ import "./sass/app.scss";
 function App() {
   return (
     <div className="app overflow-hidden relative">
+      <Navbar />
       <div className="home relative">
         <m.div
           className="shape"
@@ -29,7 +30,6 @@ function App() {
             <FaTooth />
           </div>
         </m.div>
-        <Navbar />
         <Landing />
       </div>
       <Info />

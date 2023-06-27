@@ -1,9 +1,9 @@
 @use "../../sass/mixins/grid" as *;
 .advices {
   .advices__content {
-    @include grid(550px);
+    @include grid(350px);
     @media (max-width: 767px) {
-      @include grid(270px);
+      @include grid(200px);
     }
     .advice {
       .information {

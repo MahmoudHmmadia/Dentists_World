@@ -30,7 +30,7 @@ function Services() {
                 }}
               />
               <m.p
-                className="cl-w radius bold txt-c fs-small p-2 blue_gradient_bg"
+                className="cl-w radius-s bold txt-c fs-small p-2 blue_gradient_bg"
                 whileInView={{
                   opacity: [0, 1],
                   scale: [0, 1],
@@ -68,7 +68,7 @@ function Services() {
           <div className="services__group">
             {services.map((service, index) => (
               <m.div
-                className="service p-2 box-shadow radius flex flex-column g-1 align-center txt-c white-bg"
+                className="service p-2 light-box-shadow radius-m flex flex-column g-1 align-center txt-c white-bg"
                 key={index}
                 whileInView={{
                   opacity: [0, 1],
