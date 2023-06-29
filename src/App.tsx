@@ -8,10 +8,15 @@ import Register from "./pages/register";
 import Footer from "./components/footer/Footer";
 import { motion as m } from "framer-motion";
 import "./sass/app.scss";
-
+import { Helmet } from "react-helmet";
+import logo from "./assets/images/logo1.png";
 function App() {
   return (
     <div className="app overflow-hidden relative">
+      <Helmet>
+        <link rel="icon" href={logo} />
+        <title>| Dentists World</title>
+      </Helmet>
       <Navbar />
       <div className="home relative">
         <m.div
