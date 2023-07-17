@@ -9,18 +9,27 @@ import {
   BsCalendarCheckFill,
   GiDandelionFlower,
   AiTwotoneSetting,
+  IoCloseCircle,
 } from "react-icons/all";
 import "./navbar.scss";
+import { UseContext } from "../../context/context";
 function Navbar() {
-  const [toggle, setToggle] = useState(false);
+  const { setToggle, toggle } = UseContext();
   return (
-    <nav className="white-bg pt-1 pb-1 box-shadow ">
+    <nav
+      className="white-bg box-shadow pt-1 pb-1"
+      style={{
+        boxShadow: "0 0 4px #0000004a",
+      }}
+    >
       <div className="container flex align-center justify-between">
         <ul className={`links flex g-2 justify-end ${toggle ? "show" : ""}`}>
           {toggle && (
-            <div className="icon cl-m txt-c fs-x-large flower">
-              <GiDandelionFlower />
-            </div>
+            <>
+              <li className="icon cl-m txt-c fs-x-large flower">
+                <GiDandelionFlower />
+              </li>
+            </>
           )}
           <NavLinkComponent
             title={"الصفحة الرئيسية"}

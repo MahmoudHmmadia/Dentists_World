@@ -12,6 +12,9 @@ function Hamburger({ toggle, setToggle }: HamburgerI) {
     <div
       onClick={handleToggle}
       className={`${toggle ? "open" : ""} relative smooth pointer nav-icon`}
+      style={{
+        zIndex: 9,
+      }}
     >
       <span
         className={`absolute w-100 blue-bg ${toggle ? "red-bg" : ""}`}
