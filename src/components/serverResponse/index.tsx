@@ -1,5 +1,11 @@
 import { motion as m } from "framer-motion";
-import { CgCheck, CiWarning, IoMdReturnLeft } from "react-icons/all";
+import {
+  CgCheck,
+  CiWarning,
+  IoCloseCircle,
+  IoMdReturnLeft,
+  MdDone,
+} from "react-icons/all";
 import Button from "../button";
 import { useRegister } from "../../hooks/useRegister";
 import { UseContext } from "../../context/context";
@@ -38,16 +44,18 @@ function ServerResponse({ response, reset }: props) {
           response.type == "error" ? "cl-r" : "cl-g"
         }`}
       >
-        {response.type === "done" ? <CgCheck /> : <CiWarning />}
+        {response.type === "done" ? <MdDone /> : <CiWarning />}
       </div>
       <h3 className="cl-t2 txt-c uppercase">{response.content}</h3>
       <div className="flex g-1 align-center">
         <Button
-          bgColor="red-bg"
+          bgColor={`${
+            response.type == "done" ? "green_gradient_bg" : "red_gradient_bg"
+          }`}
           color="cl-w"
           extraStyles="w-70 m-auto"
           content={`${response.type === "error" ? "المحاولة لاحقاً" : "حسناً"}`}
-          icon={response.type === "error" ? IoMdReturnLeft : CgCheck}
+          icon={response.type == "done" ? CgCheck : IoCloseCircle}
           clickFunction={() => {
             setServerResponse(undefined);
             reset && reset();

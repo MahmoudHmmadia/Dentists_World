@@ -55,7 +55,7 @@ function Register() {
           clearInputs();
           setIsLoading(false);
           setServerResponse({
-            type: "",
+            type: "done",
             content: "تم تسجيل الدور بنجاح",
           });
         })
