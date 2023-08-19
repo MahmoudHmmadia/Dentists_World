@@ -1,13 +1,6 @@
 import { motion as m } from "framer-motion";
-import {
-  CgCheck,
-  CiWarning,
-  IoCloseCircle,
-  IoMdReturnLeft,
-  MdDone,
-} from "react-icons/all";
+import { CgCheck, CiWarning, IoCloseCircle, MdDone } from "react-icons/all";
 import Button from "../button";
-import { useRegister } from "../../hooks/useRegister";
 import { UseContext } from "../../context/context";
 type res = {
   content: string;

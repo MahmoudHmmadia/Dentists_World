@@ -257,6 +257,7 @@ function Register() {
                 whileHover={{
                   scale: 1.2,
                 }}
+                disabled={isLoading}
                 type="submit"
                 className={`button  cl-w centering-content 
                     bold g-1 p-1 radius-s relative z-10000 fs-b-small m-auto w-80 ${
